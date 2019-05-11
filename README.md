@@ -17,3 +17,9 @@ This is the code Repo for a Catalog website. This code base was used to learn Fl
 * requests
 * re
 * flask-httpauth
+
+## Instructions
+Clone the project folder
+Install Flask
+cd into the project folder
+serve the project with the command python2 project.py
