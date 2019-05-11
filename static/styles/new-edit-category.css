@@ -1,0 +1,87 @@
+/* Omnipotent Styling */
+* {
+	font-family: 'Passion One', cursive;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000; 
+}
+
+/* Nav */
+.nav {
+	position: absolute;
+	width: 70%; 
+	padding: 35px;  
+	margin-left: 4%;
+	margin-top: 30px;
+	background-color: #ff7f7f;
+}
+
+.title {
+	margin-left: calc((100% - 322.28px)/2);
+	font-size: 50px;
+	font-weight: bold;  
+	color: black; 
+}  
+
+.login-signup { 
+	float: right;
+	margin-top: calc(47px/2);
+	margin-right: 15px; 
+	font-size: 17px;	
+	color: #000; 
+}
+
+/* Background */
+.background-box-1 { 
+	position: absolute; 
+	z-index: -1;
+	height: 75vh; 
+	width: 85%;
+	margin-top: 130px; 
+	margin-left: 10%;  
+	background-color: #8bff8b;
+}
+
+/* Main boxes */
+.category-form {   
+	margin-top: 115px;
+} 
+
+.category-input { 
+	display: block;
+	height: 46px;
+	width: 400px;
+	padding-left: 5px; 
+	margin-top: 12px;
+	margin-bottom: 10px;
+	border: 2.5px solid #fff; 
+	border-radius: 6px;
+	font-size: 25px;
+}
+
+.flashes {
+	margin-left: calc(((100% - 400px)/2) + 10px);
+	margin-bottom: 0;
+	font-size: 22px;
+}
+
+.category-submit {
+	height: 46px;
+	width: 400px;
+	margin-top: 25px;
+	line-height: 0px; 
+	background: none;
+	border: 4.5px solid #000;  
+	border-radius: 6px;	
+	font-size: 28px;
+}
+
+.category-submit:hover {
+	background-color:#fff;
+}
+
+.add-new-link { 
+	margin-bottom: 10px;
+}

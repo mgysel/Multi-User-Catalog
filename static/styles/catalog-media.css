@@ -1,0 +1,42 @@
+@media (max-width: 600px) {
+	.background-box-1 {
+		display: none;
+	}
+	.categories {
+		float: initial;
+		background-color: #ffa5a5;
+		width: 90%; 
+		margin-left: 5%; 
+		z-index: -1;
+	}
+	.background-box-2 {
+		display: none;
+	}
+	.latest-items { 
+		float: initial;
+		width: 90%;
+		margin-top: 20px;
+		margin-left: 5%;
+		margin-bottom: 20px;
+		background-color: #8bff8b;  
+	}
+	.main-section-title {
+		margin-top: 0;
+		padding-top: 20px;
+	}
+}
+@media (max-width: 500px) { 
+	.nav {
+		padding: 10px 0 20px 0;
+	}
+	.title {
+		display: block;
+		font-size: 50px;
+		margin-left: calc((100% - 224.75px)/2);
+	}
+	.login-signup {
+		width: 100px;
+		margin-top: 0;
+		margin-right: calc((100% - 100px)/2);
+	}
+}

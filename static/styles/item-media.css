@@ -1,0 +1,37 @@
+@media (max-width: 600px) {
+	.nav {
+	    position: static;
+	    margin-left: 5%;
+	    width: 90%;
+	}
+	.title {
+	    margin-left: calc((100% - 224.73px)/2);
+	}
+	.background-box-1 {
+	    position: static;
+	    height: auto;
+		width: 90%;
+		padding-bottom: 20px; 
+		margin-top: 20px;
+	}
+	.main-section-title { 
+	    padding-top: 20px;
+	    margin-top: 0;
+	}
+}
+@media (max-width: 500px) {
+	.nav {
+		padding: 10px 0 20px 0;
+		margin-top: 20px;
+	}
+	.title {
+		display: block;
+		margin-left: calc((100% - 224.75px)/2);
+		font-size: 50px;
+	}
+	.login-signup {
+		width: 100px;
+		margin-top: 0;
+		margin-right: calc((100% - 100px)/2);
+	}
+}

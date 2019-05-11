@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/catalog.css') }}">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/catalog-media.css') }}">
+		<script src="{{url_for('static', filename='scripts/jquery-3.2.1.min.js')}}"></script>
+		<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+	</head>
+	<body>
+		{% include 'authorization.html' %}
+		<div class='background-box-1'></div>
+		<div class='categories main-section'>
+			<h2 class='categories-title main-section-title text-center'>categories</h2>
+			<a class='add-new-category add-new-item center-block text-center' href="{{url_for('newCategory')}}">Add New Category</a>
+			{% if categories %}
+				{% for category in categories %}
+					<div class='category category-item-container main-section-item-container'>
+						<span class='bullet-point'>•</span> 
+						<a class='category-title main-section-item' href="{{url_for('category', category_id=category.id)}}">{{category.name}}.</a>
+						{% if category.user_id == login_session['user_id'] %}
+							<a class='category-edit item-category-edit-delete' href="{{url_for('editCategory', category_id=category.id)}}">Edit</a>
+							/
+							<a class='category-delete item-category-edit-delete' href="{{url_for('deleteCategory', category_id=category.id)}}">Delete</a>
+						{% endif %}
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+		<div class='background-box-2'></div>
+		<div class='latest-items main-section'>
+			<h2 class='latest-items-title main-section-title text-center'>latest items</h2>
+			<a class='add-new-item center-block text-center' href="{{url_for('newItem')}}">Add New Item</a>
+			{% if items %}
+				{% for item in items %}
+					{% if categories %}
+						{% for category in categories %}
+							{% if category.id == item.category_id %}
+								<div class='item category-item-container main-section-item-container'>
+									<span class='bullet-point'>•</span> 
+									<a class='item-title main-section-item' href="{{url_for('item', category_id=category.id, item_id=item.id)}}">{{item.name}} </a>
+									<a class='item-category main-section-item main-section-item-secondary' href="{{url_for('category', category_id=category.id)}}">({{category.name}})</a>.
+									{% if item.user_id == login_session['user_id'] %}
+										<a class='item-edit item-category-edit-delete' href="{{url_for('editItem', category_id=category.id, item_id=item.id)}}">Edit</a>
+										/
+										<a class='item-delete item-category-edit-delete' href="{{url_for('deleteItem', category_id=category.id, item_id=item.id)}}">Delete</a>
+									{% endif %}
+								</div>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		</div>
+	</body>
+</html>

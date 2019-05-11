@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/delete-item-category.css') }}">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/delete-item-category-media.css') }}">
+		<script src="{{url_for('static', filename='scripts/jquery-3.2.1.min.js')}}"></script>
+		<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+	</head>
+	<body>
+		{% include 'authorization.html' %}
+		<div class='background-box-1'>
+			<form class='form' action='/category/{{category.id}}/delete' method='POST'>
+				<p class='text-element text-center'>Are you sure you want to delete the following category?</p>
+				<p class='text-element text-center'>{{category.name}}</p>
+				<div class='submit-cancel-container'>
+					<input class='submit-button submit-cancel-button text-center' type='submit' value='Delete'>
+					<a class='cancel-button submit-cancel-button text-center' "{{url_for('catalog')}}">Cancel</a>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

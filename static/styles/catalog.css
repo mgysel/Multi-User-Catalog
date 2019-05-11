@@ -1,0 +1,100 @@
+/* Omnipotent Styling */
+* {
+	font-family: 'Passion One', cursive;
+	text-decoration: none;
+} 
+
+a:hover {
+	color: #000;	
+}
+ 
+/* Main containers */ 
+.categories {
+	width: 45%;
+	float: left;
+	margin-left: 5%;
+}  
+
+.latest-items { 
+	width: 50%;
+	margin-top: 76px;
+	margin-left: 50%;
+}
+
+/* Nav */
+.nav {
+	padding: 20px; 
+} 
+
+.title {
+	font-size: 68px;
+	color: #000; 
+	margin-left: calc((100% - 322.28px)/2);
+}  
+
+.login-signup {
+	float: right;
+	margin-right: 15px; 
+	margin-top: 36.5px;
+	color: #000; 
+	font-size: 17px;	
+}
+
+/* Background */
+.background-box-1 {
+	position: absolute; 
+	z-index: -1;
+	height: 75vh; 
+	width: 85%; 
+	margin-left: 5%; 
+	background-color: #ffa5a5;
+}
+
+.background-box-2 {
+	position: absolute;
+	z-index: -1;
+	height: 63vh;
+	width: 50%;
+	margin-top: 56px;
+	margin-left: 50%; 
+	background-color: #8bff8b; 
+
+}
+
+/* Main boxes */
+.main-section {
+	padding: 0px 15px 15px 15px; 
+}
+
+.main-section-title { 
+	font-size: 33px; 
+}
+
+.add-new-item {
+	margin-bottom: 10px;   
+	font-size: 16px; 
+	color: #000;  
+}
+
+.main-section-item {    
+	font-size: 18px;
+	color: #000; 
+}
+
+.bullet-point {
+	font-size: 18px;
+	color: #000; 	
+}
+
+.main-section-item-secondary {   
+	font-size: 15px;
+	color: #000; 
+}
+
+.category-item-container {
+	width: 100%;
+}
+
+.item-category-edit-delete {
+	color: #000; 	
+}

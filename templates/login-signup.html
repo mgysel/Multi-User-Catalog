@@ -1,0 +1,192 @@
+<head>
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login-signup.css') }}">
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login-signup-media.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+	<script src="{{url_for('static', filename='scripts/jquery-3.2.1.min.js')}}"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="//apis.google.com/js/platform.js?onload=start"></script>
+</head>
+<body>
+	<nav class='nav'>
+		<a class='title' href="{{url_for('catalog')}}">C A T A L O G</a>
+	</nav>
+	<div class='oauth-container'>
+		<!-- GOOGLE PLUS SIGN IN-->
+		<div class='oauth-sign-in google-sign-in'>
+			<!-- 
+			scope - what user info want to access?
+			clientid - client id you registered
+			accesstype offline - server can make requests offline
+			cookiepolicy single_host_origin - only this single host name can access cookie
+			callback - specifies callback function if user clicks and grants access, given onetime use code and access token
+			approvalprompt force - forces user to sign in each time, good for debugging but not for actual use
+			-->
+			<span class="g-signin"
+				data-scope="openid email"
+				data-clientid="269121368386-0qorkmb2q3duoi6874luj57iorelk7uf.apps.googleusercontent.com"
+				data-redirecturi="postmessage"
+				data-accesstype="offline"
+				data-cookiepolicy="single_host_origin"
+				data-callback="signInCallback" data-width="800" data-height="500">
+			</span>
+		</div>
+		<!-- FACEBOOK SIGN IN-->
+		<button class='oauth-sign-in facebook-sign-in'> 
+			<!-- 
+			Gives us FB SDK to create FB Login Button
+				scope - info app wants to request
+			When clicked, invoke SendTokenToServer method
+			 -->
+			<fb:login-button class='f-signin' scope="public_profile,email" onlogin="sendTokenToServer();" size="large">
+				<a href='javascript:sendTokenToServer()' font-size="20px">Signup/Login</a>
+			</fb:login-button>
+		</button>
+	</div>
+	<div class="signup-login-container signup-container background-box-1">
+		<form class="signup-login-form signup-form" action='/signup' method='POST'>
+			<div class='email-div'>
+				<input class='signup-email signup-login-input' type='email' name='email' placeholder='user@email.com' value='{{email}}'>
+				<ul class="email-validation validation">
+		            <li id="email-item"><span id="email-check" class="check">&#10006;</span> Invalid Email Address</li>
+		        </ul>
+		    </div>
+		    <div class='username-div'>
+				<input class="signup-username signup-login-input" type='text' name='username' placeholder='username' value='{{username}}'>
+			</div>
+			<div class='password-div'>
+				<input class='signup-password-1 signup-login-input' type='password' name='password' placeholder='password'>
+				<input class='signup-password-2 signup-login-input' type='password' name='confirm-password' placeholder='confirm password'>
+		        <ul class="password-validation validation">
+		            <li id="password-length-item"><span id="password-length-check" class="check">&#10006;</span> 10-35 characters long.</li>
+		            <li id="uppercase-item"><span id="uppercase-check" class="check">&#10006;</span> Contains uppercase letter.</li>
+		            <li id="lowercase-item"><span id="lowercase-check" class="check">&#10006;</span> Contains lowercase letter.</li>
+		            <li id="number-item"><span id="number-check" class="check">&#10006;</span> Contains number.</li>
+		            <li id="symbol-item"><span id="symbol-check" class="check">&#10006;</span> Contains a symbol.</li>
+		            <li id="match-item"><span id="match-check" class="check">&#10006;</span> Passwords match.</li>
+		        </ul>
+			</div>
+			<input class='signup-submit signup-login-submit' type='submit' value="Sign up for Blog">
+		</form>
+	</div>
+	<div class="signup-login-container login-container vertical-align">
+		<form class="signup-login-form login-form vertical-align" action='/login' method='POST'>
+			<input class="login-username signup-login-input" type='text' name='login-username' placeholder='username'>
+			<input class="login-password signup-login-input" type='password' name='login-password' placeholder='password'>
+			<input class='login-submit signup-login-submit' type='submit' value="Login">
+		</form>
+	</div>
+
+	<!-- Google login -->
+	<script>
+		// Function that handles Google auth response to the client (user)
+		// If 1 time code received, sends it to server.
+		function signInCallback(authResult) {
+			// If auth result contains a parameter called 'code',
+			// We know authorization with the Google API was successful and use code is present
+			if (authResult['code']) {
+
+				// Hide the sign-in button now that the user is authorized,
+				$('#signInButton').attr('style', 'display: none');
+
+				// Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main page
+				$.ajax({
+					// Post method
+					type: 'POST',
+					// url method will call. Will define on server later
+					// Pass sever state token as an argument to verify against cross-site reference forgery attack.
+					url: '/gconnect?state={{STATE}}',
+					// indicates don't want jquery to process the response
+					// into a string
+					processData: false,
+					// specify data going to send to server, the one-time use code.
+					data: authResult['code'],
+					// binary stream of data, formatted using utf-8
+					contentType: 'application/octet-stream; charset=utf-8',
+					// If receive a success, return successful login message to user
+					// and redirect to main page after 
+					success: function(result) {
+						// Handle or verify the server response if necessary.
+						// Then redirect to main restaurants page
+						// Result is any additional info the server
+						// wants to pass to client, in id='result' div
+						if (result) {
+							window.location.href = "/";
+						// If an error, report to console.log
+						} else if (authResult['error']) {
+							console.log('There was an error: ' + authResult['error']);
+						// If no response returned from server to callback,
+						// Return error message to result div.
+						} else {
+							$('#result').html('Failed to make a server-side call. Check your configuration and console.');
+						}
+					}
+			  	});
+			}
+		}
+	</script>
+	<!--END GOOGLE SIGN IN -->
+
+
+	<!--FACEBOOK SIGN IN -->
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId      : '2011590259073867',
+				cookie     : true,  // enable cookies to allow the server to access 
+									// the session
+				xfbml      : true,  // parse social plugins on this page
+				version    : 'v2.8' // use version 2.8
+			});
+
+		  };
+
+	  	// Load the SDK asynchronously,
+	  	// So that the rest of the page can load without it.
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+		// Called when we click FB SDK Button
+		// Here we run a very simple test of the Graph API after login is
+		// successful.  See statusChangeCallback() for when this call is made.
+		function sendTokenToServer() {
+			// Retrieves short-lived access token
+			var access_token = FB.getAuthResponse()['accessToken'];
+			console.log(access_token)
+			console.log('Welcome!  Fetching your information.... ');
+			// Can use FB SDK to make API Calls
+			FB.api('/me', function(response) {
+				console.log('Successful login for: ' + response.name);
+				// Send access token to server via AJAX, along with state value
+				// AJAX REQUEST NOT OCCURING
+				$.ajax({
+					type: 'POST',
+					url: '/fbconnect?state={{STATE}}',
+					processData: false,
+					data: access_token,
+					contentType: 'application/octet-stream; charset=utf-8',
+					success: function(result) {
+						// Handle or verify the server response if necessary.
+						if (result) {
+							window.location.href = "/";
+						} else {
+							$('#result').html('Failed to make a server-side call. Check your configuration and console.');
+						}
+					}
+				});
+			});
+		}
+
+	</script>
+	<!--END FACEBOOK SIGN IN -->
+
+	<div id="result"></div>
+
+	<script src="{{url_for('static', filename='scripts/LoginSignupValidation.js')}}"></script>
+</body>

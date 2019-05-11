@@ -1,0 +1,138 @@
+/* Omnipotent Styling */
+* {
+	font-family: 'Passion One', cursive; 
+	text-decoration: none;
+	list-style-type: none; 
+}
+
+a:hover {
+	color: #000;
+}
+
+/* Nav */
+.nav {
+	padding: 20px; 
+}
+
+.nav {
+    position: absolute;
+	width: 100%;
+	padding: 20px;
+	background-color: #ffa5a5;
+}
+
+.title {
+	margin-left: calc((100% - 305.66px)/2);
+	font-size: 68px;
+	font-family: 'Passion One', cursive; 
+	color: black; 
+}
+
+.login-signup {
+	float: right;
+	margin-right: 10px; 
+}
+
+/* Main containers */ 
+.oauth-container {
+	margin-top: 157px;
+	height: 80px;
+	width: 60%;
+	z-index: -1;
+	float: left;
+	margin-left: 20%;
+	background-color:#8bff8b;
+}
+
+.signup-login-container {
+    margin-top: 20px; 
+}
+
+.signup-container { 
+	width: 43%;
+	z-index: -1;
+	float: left;
+	margin-left: 5%;
+	background-color:#8bff8b;
+}  
+
+.login-container { 
+	width: 43%; 
+	float: right;
+	margin-right: 5%;  
+	background-color: #8bff8b; 
+}
+
+/* Main boxes */
+.signup-login-form {
+	margin-left: calc((100% - 300px)/2)
+}
+
+.signup-form {
+	margin-top: 60px;
+	margin-bottom: 60px;
+}  
+
+.login-form {
+	margin-top: calc((375px - 155px)/2); 
+	margin-bottom: calc((375px - 155px)/2); 
+}
+
+.signup-login-input { 
+	height: 40px;
+	width: 300px; 
+	padding-left: 5px;
+	margin-bottom: 10px;
+	border: 2.5px solid #fff; 
+	border-radius: 6px;
+	font-size: 25px;
+}
+
+.signup-login-input::placeholder {
+	padding-left: 5px;
+	font-size: 25px;
+}
+
+.password-validation {
+	margin-bottom: 0;
+}
+
+.validation {
+	display: none;
+	padding-left: 13px;
+	font-size: 16px;
+}
+
+.signup-login-submit {
+	line-height: 0px; 
+	height: 40px;
+	width: 300px;
+	margin-top: 15px;
+	border: 4.5px solid #000; 
+	border-radius: 6px;
+	background: none;
+	font-size: 28px;
+}
+
+.signup-login-submit:hover {
+	background-color: #fff;
+}
+
+/* oAuth Buttons */
+.oauth-sign-in {    
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.google-sign-in {
+	margin-top: calc((80px - 31px)/2);
+	margin-left: calc((100% - (119px + 116px + 45px))/2);
+}
+
+.facebook-sign-in {
+	float: right;
+	margin-right: calc((100% - (119px + 116px + 45px))/2);
+	margin-bottom: 20px;
+	margin-top: calc(-1*(80px - 16px)/2);
+}

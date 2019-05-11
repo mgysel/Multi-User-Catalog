@@ -1,0 +1,8 @@
+<nav class='nav'>
+	<a class='title' href="{{url_for('catalog')}}">C A T A L O G</a>
+	{% if not login_session['username'] %}
+		<a class='login-signup vertical-align text-center' href="{{url_for('login')}}">Login/Signup</a>
+	{% else %}
+		<a class='login-signup logout vertical-align text-center' href="{{url_for('logout')}}">Logout</a>
+	{% endif %}
+</nav>

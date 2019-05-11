@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/category.css') }}">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/category-media.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+	</head>
+	<body>
+		{% include 'authorization.html' %}
+		<div class='background-box-1'>
+			{% if category %}
+				<h2 class='items-title main-section-title text-center'>{{category.name}} Items</h2>
+			{% endif %}
+			<div class='items'>
+				<a class='add-new-link text-center center-block' href="{{url_for('newItem')}}">Add New Item</a>
+				{% if items %}
+					{% for item in items %}
+					<div class='item'>
+						<span class='bullet-point'>•</span> 
+						<a class='item-title main-section-item' href="{{url_for('item', category_id=category.id, item_id=item.id)}}">{{item.name}}</a>.  
+						{% if item.user_id == login_session['user_id'] %}  
+							<a class='item-edit item-edit-delete' href="{{url_for('editItem', category_id=category.id, item_id=item.id)}}">   Edit </a> / 
+							<a class='item-delete item-edit-delete' href="{{url_for('deleteItem', category_id=category.id, item_id=item.id)}}">   Delete</a>
+						{% endif %}
+					</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+	</body>
+</html>

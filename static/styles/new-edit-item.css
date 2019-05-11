@@ -1,0 +1,109 @@
+/* Omnipotent Styling */
+body {
+	margin: 0;
+}
+
+* {
+/* 	border: 1px solid black; */
+	font-family: 'Passion One', cursive;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #000;
+}
+
+/* Nav */
+.nav {
+	position: absolute;
+	padding: 35px;  
+	margin-left: 4%;
+	margin-top: 30px;
+	width: 70%; 
+	background-color: #ff7f7f;
+}
+
+.title {
+	font-size: 50px;
+	font-weight: bold;  
+	color: black; 
+	margin-left: calc((100% - 322.28px)/2);
+}  
+
+.login-signup { 
+	color: #000; 
+	font-size: 17px;	
+	float: right;
+	margin-right: 15px; 
+	margin-top: calc(47px/2);
+}
+
+/* Background */
+.background-box-1 { 
+	position: absolute; 
+	background-color: #8bff8b;
+	width: 85%;
+	margin-left: 10%;  
+	margin-top: 130px; 
+	z-index: -1;
+}
+
+.signup-login-submit:hover {
+	background-color: #fff;
+}
+/* Main boxes */
+.item-form {  
+	padding-bottom: 20px; 
+	margin-top: 85px;
+	margin-bottom: 20px;
+} 
+
+.item-input {
+	display: block;
+	margin-top: 12px;
+	width: 650px;
+	height: 46px;
+	border-radius: 6px;
+	margin-bottom: 10px;
+	font-size: 25px;
+	padding-left: 5px;
+	border: 2.5px solid #fff; 
+}
+
+.flashes {
+	margin-left: calc(10% + 10px);
+	margin-bottom: 0;
+	font-size: 22px;
+}
+
+.item-description {
+	height: 200px;
+}
+
+.item-input::placeholder {
+	font-size: 25px;
+	padding-left: 5px; 
+}
+
+.item-submit {
+	width: 350px;
+	height: 46px;
+	border-radius: 6px;	
+	margin-top: 25px;
+	background: none;
+	border: 4.5px solid #000;  
+	font-size: 28px;
+	line-height: 0px; 
+}
+
+.item-submit:hover {
+	background-color: #fff;
+}
+
+.add-new-link {  
+	margin-bottom: 10px;
+}
+
+.category-item-container {
+	width: 100%;
+}

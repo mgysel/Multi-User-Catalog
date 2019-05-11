@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/item.css') }}">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/item-media.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+	</head>
+	<body>
+		{% include 'authorization.html' %}
+		<div class='background-box-1'>
+			<div class='item'>
+				{% if item %}
+					<h2 class='item-title main-section-title text-center'>{{item.name}}</h2>
+					<p class='item-description'>{{item.description}}</p>
+					{% if item.user_id == login_session['user_id'] %}
+						<a class='item-edit item-edit-delete' href="{{url_for('editItem', category_id=category.id, item_id=item.id)}}">Edit</a>
+						<a class='item-delete item-edit-delete' href="{{url_for('deleteItem', category_id=category.id, item_id=item.id)}}">Delete</a>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</body>
+</html>

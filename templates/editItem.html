@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/new-edit-item.css') }}">
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/new-edit-item-media.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+	</head>
+	<body>
+		{% include 'authorization.html' %}
+		<div class='background-box-1'>
+			<form class='item-form' action='/category/{{category.id}}/item/{{item.id}}/edit') method='POST'>
+				<input class='item-name item-element item-input center-block' type='text' name='edit-item-name' value='{{item.name}}'>
+				<input class='item-description item-element item-input center-block' type='text' name='edit-item-description' value='{{item.description}}'>
+				<select class='item-category item-element item-input center-block' name='edit-item-category'>
+					{% if categories %}
+						{% for category in categories %}
+							<option value='{{category.name}}'>{{category.name}}</option>
+						{% endfor %}
+					{% endif %}
+				</select>
+				<input class='item-submit item-element center-block' type='submit' value='Save'>
+			</form>
+		</div>
+		<script src="{{url_for('static', filename='scripts/jquery-3.2.1.min.js')}}"></script>
+		<script src="{{url_for('static', filename='scripts/newItemValidation.js')}}"></script>
+	</body>
+</html>
